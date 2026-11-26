@@ -1,247 +1,281 @@
-/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
+/*    FONTS   */
+@font-face {
+  font-family: 'ModeSeven';
+  src: url('https://static.wfonts.com/data/2015/05/09/modeseven/modes.ttf') format('ttf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ArcadeClassic';
+  src: url('https://static.wfonts.com/data/2016/01/20/arcade-classic/ArcadeClassic.woff') format('woff');
+  font-display: swap;
 }
 
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Customize the background color to match your design.
- */
+/*    VARIABLES   */
+:root {
+  --glow-alpha: .92; /* REDUNDANT */
 
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
+  /*  ===== BASE =====  */
+  --bg: #141414;
+  --text: #f3f3f3;
+  --invert-text: #141414;
+  --text-hover: #7f898c;
+
+  /*  ===== COLOR =====  */
+  --orange: #F98410;
+  --orange-glow1: #C26305 0 0 2px;
+  --orange-glow2: rgba(194 99 5 / 0.75) 0 0 10px;
+  --red: #ba0b0b;
+  --red-glow1: #8F0000 0 0 2px;
+  --red-glow2: rgb(143 0 0) 0 0 10px;
+  --blue: #69D4D2FF;
+  --blue-glow1: #2D9F9C 0 0 2px;
+  --blue-glow2: rgb(45 159 156 / 0.75) 0 0 10px;
+  --teal: #388e9a;
+  --fctint: sepia(90%) hue-rotate(145deg) saturate(100%) brightness(95%);
+
+  /*  ===== LAYOUT =====  */
+  --wrap: 1440px;
+  --margin: 4%;
+}
+:root[data-theme="light"] {}
+
+@media (max-width: 900px) {
+  :root {
+    --wrap: 600px;
+  }
 }
 
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
+body {
+  background-color: var(--bg) !important;
+  color: var(--text);
+  font-family: ModeSeven, monospace;
+  margin: 0;
 }
 
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
+img, svg, video {
   vertical-align: middle;
 }
 
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
+p {
+  font-family: ModeSeven, monospace;
   margin: 0;
-  padding: 0;
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
+h1 {
+  font-family: ArcadeClassic, monospace;
+  text-align: left;
+  font-size: 5rem;
+  letter-spacing: 1.5rem;
+  color: var(--red);
+  text-shadow: var(--red-glow1), var(--red-glow2);
+  margin: var(--margin) 0 0;
 }
+
+h2 {
+  font-family: ModeSeven, serif;
+  text-align: left;
+  font-size: 1rem;
+  letter-spacing: .3rem;
+  color: var(--orange);
+  text-shadow: var(--orange-glow1), var(--orange-glow2);
+}
+
+.site-wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 
 /* ==========================================================================
-   Author's custom styles
+   Navigation
    ========================================================================== */
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  margin: 0 auto;
+  max-width: var(--wrap);
+  height: 70px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
 }
-
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
+.nav img {
   position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
+  left: 2%;
+  width: 40px;
+  filter: drop-shadow(var(--text) 0 0 2px);
 }
 
-/*
- * Extends the .visually-hidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.visually-hidden.focusable:active,
-.visually-hidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  background-color: rgba(243, 243, 245, .1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255, 0.2);
+  box-shadow: 2px 4px 15px rgba(0, 0, 0, .1);
+  padding: .7rem 2rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-family: ModeSeven, serif;
+  text-shadow: var(--text) 0 0 2px;
+  background-color: transparent;
+  border-radius: 99px;
+  padding: .4rem .7rem;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+.nav-links a:hover {
+  color: var(--text-hover);
+  text-shadow: var(--text-hover) 0 0 2px;
+}
+.nav-links a[aria-current="page"] {
+  background-color: var(--text);
+  color: var(--invert-text);
+  filter: drop-shadow(rgba(0, 0, 0, 0.2) 0 0 2px);
+  transition: color 0.2s ease-in-out;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
+.nav-toggle {
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  right: 2%;
+  width: 55px;
+  height: 50px;
+  background-color: rgba(243, 243, 245, .1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255, 0.2);
+  gap: 6px;
+}
+.nav-toggle span::before {
+  display: block;
+  content: "\2630";
+  line-height: 2px;
+  font-size: 24px;
+  color: var(--text);
+  transition: opacity 0.1s ease-in-out;
+}
+.nav-toggle[aria-expanded="true"] span::before {
+  content: "\2715";
 }
 
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
 
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
-}
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: flex;
+  }
 
-.clearfix::after {
-  clear: both;
+  .nav-links {
+    display: flex;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 2%;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: rgba(20, 20, 20, 0.85);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+
+  .nav.open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+
+  }
+  .nav-links a {
+    text-align: center;
+    padding: 0.8rem;
+  }
 }
 
 /* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
+   Footer
    ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
+footer {
+  height: 100%;
+  background-color: rgb(53, 63, 85, .1);
+}
+.footer-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 50px 0;
 }
 
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
+.facebook {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.facebook a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.instagram {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.instagram a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: var(--text);
 }
 
 /* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
+   Lightbox
    ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
-
-  pre {
-    white-space: pre-wrap !important;
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(20 20 20 / 0.65);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgb(105 212 210 / 0.03) 0px,
+    rgb(105 212 210 / 0.03) 2px,
+    transparent 1px,
+    transparent 4px
+  );}
+#lightbox.active {
+  display: flex;
 }
-
+#lightbox-img {
+  max-width: 80vw;
+  max-height: 80vh;
+  aspect-ratio: auto;
+  object-fit: contain;
+  animation: zoomIn 0.2s ease-out;
+}
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
