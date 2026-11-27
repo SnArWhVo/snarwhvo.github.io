@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Events
+   ========================================================================== */
+.Events {
+  height: 100%;
+}
+
+.events-panel {
+  height: 80vh;
+  position: relative;
+}
+
+.epborder {
+  height: 100%;
+  position: relative;
+}
+.epborder::after {
+  content: "";
+  height: 100%;
+  border: var(--teal) .2rem solid;
+  background-color: var(--teal);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  clip-path: polygon(
+    /* down the right side */
+    24px 0,
+    24px calc(50% - 28px),
+    6px  calc(50% - 10px),     /* diagonal in */
+    6px  calc(50% + 10px),     /* short vertical */
+    24px calc(50% + 28px),     /* diagonal back out */
+    24px 99.2%,
+      /* back up, 2px to the left (this is the line's thickness) */
+    22px 99.2%,
+    22px calc(50% + 28px),
+    4px  calc(50% + 10px),
+    4px  calc(50% - 10px),
+    22px calc(50% - 28px),
+    22px 0
+  );
+}
+.epborder::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  clip-path: polygon(
+    0 0,                                  /* top left */
+    99.5% 0,                               /* top right */
+    99.5% calc(50% - 28px),                /* down the right edge */
+    calc(100% - 18px) calc(50% - 10px),   /* diagonal in */
+    calc(100% - 18px) calc(50% + 10px),   /* short vertical */
+    99.5% calc(50% + 28px),                /* diagonal back out */
+    99.5% 100%,                            /* bottom right */
+    0 100%                                /* bottom left */
+  );
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgb(105 212 210 / 0.03) 0px,
+    rgb(105 212 210 / 0.03) 2px,
+    transparent 1px,
+    transparent 4px
+  );
+  -webkit-mask-image:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 34%,
+      rgba(255, 255, 255, .65) 55%,
+      rgba(255, 255, 255, 0) 95%
+    );
+  mask-image:
+    radial-gradient(
+      ellipse 100% 98% at 100%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 24%,
+      rgba(255, 255, 255, .65) 95%,
+      rgba(255, 255, 255, .20) 100%
+    );
+}
+
+#events-gallery {
+  display: flex;
+  margin: 2% 0 0 2%;
+  position: absolute;
+  inset: 0;
+  max-height: 90%;
+  max-width: 95%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: none;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.site-wrap div {
+  position: relative;
+}
+
+.gallery-item {
+  flex-grow: calc(var(--ratio) * 100);
+  flex-basis: calc(var(--ratio) * 220px);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#events-gallery::after {
+  content: "";
+  flex-grow: 1000000;
+}
