@@ -12,25 +12,30 @@
 
 /*    VARIABLES   */
 :root {
-  --glow-alpha: .92; /* REDUNDANT */
-
   /*  ===== BASE =====  */
-  --bg: #141414;
+  --bg: #070b0c;
   --text: #f3f3f3;
   --invert-text: #141414;
   --text-hover: #7f898c;
 
   /*  ===== COLOR =====  */
   --orange: #F98410;
-  --orange-glow1: #C26305 0 0 2px;
-  --orange-glow2: rgba(194 99 5 / 0.75) 0 0 10px;
+  --orange-glow1: rgb(194 99 5 / 0.5) 0 0 4px;
+  --orange-glow2: rgba(194 99 5 / 0.25) 0 0 10px;
+  --orange-glow3: rgba(194 99 5 / 0.25) 0 0 20px;
+  --orange-glow4: rgba(194 99 5 / 0.25) 0 0 50px;
   --red: #ba0b0b;
-  --red-glow1: #8F0000 0 0 2px;
-  --red-glow2: rgb(143 0 0) 0 0 10px;
-  --blue: #69D4D2FF;
-  --blue-glow1: #2D9F9C 0 0 2px;
-  --blue-glow2: rgb(45 159 156 / 0.75) 0 0 10px;
-  --teal: #388e9a;
+  --red-glow1: rgb(143 0 0 / 0.5) 0 0 4px;
+  --red-glow2: rgb(143 0 0 / 0.25) 0 0 10px;
+  --red-glow3: rgb(143 0 0 / 0.25) 0 0 20px;
+  --red-glow4: rgb(143 0 0 / 0.25) 0 0 50px;
+  --blue: #CEEEEE;
+  --blue-glow1: rgb(206 238 238 / 0.5) 0 0 4px;
+  --blue-glow2: rgb(206 238 238 / 0.25) 0 0 10px;
+  --blue-glow3: rgb(206 238 238 / 0.25) 0 0 20px;
+  --blue-glow4: rgb(206 238 238 / 0.25) 0 0 50px;
+  --teal: #BFDDDD;
+  --fg-bg: rgb(206 238 238 / 0.05);
   --fctint: sepia(90%) hue-rotate(145deg) saturate(100%) brightness(95%);
 
   /*  ===== LAYOUT =====  */
