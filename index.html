@@ -6,7 +6,7 @@
   <title>JPVREAL Photofolio</title>
   <link rel="icon" href="/logo.ico" sizes="any">
   <link rel="icon" href="/logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/93a7941d9c.js" crossorigin="anonymous"></script>
   <!-- Stylesheet References -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/landing.css">
@@ -55,45 +55,54 @@
       <div class="site-wrap">
         <h1>Gear</h1>
         <h2>// SYS_MODULE: GEAR</h2>
-        <h2>-> What I Use</h2>
+        <h2>-> VIEWPORT:OPTIC_L // FEED_01</h2>
         <div class="gear-panel">
           <div class="gbuttons">
-            <button data-x="0" data-y="0" data-zoom=".8" data-text="// NIKON D5100">Cam</button>
-            <button data-x="80" data-y="61" data-zoom="1.3" data-text="// 50mm F1.8 Prime">Lens</button>
-            <button id="greset">Reset</button>
+            <button class="gbtn-item"
+                    data-x="0" data-y="0" data-zoom=".8"
+                    data-m-x="50" data-m-y="0" data-m-zoom="1.2"
+                    data-text="// NIKON D5100"><i class="fa fa-camera" aria-hidden="true"></i></button>
+            <button class="gbtn-item"
+                    data-x="80" data-y="58" data-zoom="1.2"
+                    data-m-x="60" data-m-y="0" data-m-zoom="1.8"
+                    data-text="// 50mm F1.8 Prime">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+            <button class="gbtn-item active" id="greset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
           </div>
           <div class="gviewport"> <!--  Includes Size, Border Design, Bg Screen Effect-->
-            <svg class="gvp-border" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-              <polyline points="0,50 0,0 50,0" />
-              <polyline points="950,1000 1000,1000 1000,950" />
-              <polyline points="950,0 1000,0 1000,50" />
-              <polyline points="0,950 0,1000 50,1000" />
+            <div class="gvp-borders">
+              <div class="outer-border"></div>
+              <div class="inner-border"></div>
+              <div class="core-border"></div>
+            </div>
 
-              <polyline points="0,300 25,300" />
-              <polyline points="0,350 20,350" />
-              <polyline points="0,400 35,400" />
-              <polyline points="0,450 30,450" />
-              <polyline points="0,500 20,500" />
-              <polyline points="0,550 25,550" />
-              <polyline points="0,600 30,600" />
-              <polyline points="0,650 35,650" />
-              <polyline points="0,700 30,700" />
-
-              <polyline points="960,300 1000,300" />
-              <polyline points="975,350 1000,350" />
-              <polyline points="970,400 1000,400" />
-              <polyline points="965,450 1000,450" />
-              <polyline points="975,500 1000,500" />
-              <polyline points="970,550 1000,550" />
-              <polyline points="960,600 1000,600" />
-              <polyline points="985,650 1000,650" />
-              <polyline points="965,700 1000,700" />
-            </svg>
             <p id="gviewport-text">TEST</p>
             <div class="screen">
               <img src="img/gear_outline.webp" alt="Gear Outline">
             </div>
           </div>
+          <div class="gvp-tdesign1">
+            <p>> SYS.INIT // OVERLAY_LINK    [ACTIVE]</p>
+            <p>> BIO_SYNC // SENSOR_FEED: NOMINAL</p>
+            <p>    └─ ping_rate: 14ms [OK]</p>
+            <p>> READY</p>
+            <p>[ SCANNING... TARGET_LOCK: PENDING ]</p>
+          </div>
+          <div class="gvp-tdesign2">
+            <p>FOCUS: AUTO_TRACK</p>
+            <p>EXPOSURE: -0.7 EV</p>
+            <p>   STATUS: BUFFERING...</p>
+          </div>
+          <div class="gvp-design-divider"></div>
+          <div class="gvp-design-bar"></div>
+
+          <div class="meter-bar"></div>
+          <div class="meter-sides"><div id="left-bar"></div><div id="right-bar"></div></div>
+          <p class="meter-text">07</p>
         </div>
       </div>
     </section>
@@ -104,36 +113,26 @@
         <div class="fpanel">
           <div class="fcbar">
             <p>SYS.DIAG//ASSET_DATABASE_V4.2</p>
-            <svg viewBox="0 0 100 30" preserveAspectRatio="none">
-              <polyline points="80,2 100,28"></polyline>
-              <polyline points="100,2 80,28"></polyline>
-
-              <polygon points="41,2 63,2 63,28 41,28"></polygon>
-
-              <polyline points="0,28 20,28"></polyline>
-            </svg>
+            <p>[ - x</p>
           </div>
-          <div class="fsub">
-            <div class="l-fsub">
-              <p class="fsub-text">[05/05 ITEMS LOADED]</p>
-              <div class="fsub-box">
-                <div class="fsub-bars"></div>
-                <div class="fsub-bars"></div>
-                <div class="fsub-bars"></div>
-                <div class="fsub-bars"></div>
-                <div class="fsub-bars"></div>
+
+          <div class="fp-inframe">
+            <div class="fsub">
+              <div class="l-fsub">
+                <p>[05/05 ITEMS LOADED]</p>
+                <div class="fsub-box">
+                  <div class="fsub-bars"></div>
+                  <div class="fsub-bars"></div>
+                  <div class="fsub-bars"></div>
+                  <div class="fsub-bars"></div>
+                  <div class="fsub-bars"></div>
+                </div>
+              </div>
+              <div class="r-fsub">
+                <p>LOC: 08°29'00"N 124°39'00"E</p>
+                <p>SYS_VOLT: 12.4V | FREQ: 433.92MHz</p>
               </div>
             </div>
-            <div class="r-fsub">
-              <p>LOC: 08°29'00"N 124°39'00"E</p>
-              <p>SYS_VOLT: 12.4V | FREQ: 433.92MHz</p>
-            </div>
-          </div>
-          <div class="fmw-panel">
-            <p>SEQUENCE_REF_01</p>
-            <svg class="fmw-border" viewBox="0 0 1000 700" preserveAspectRatio="none">
-              <polygon points="0,30 0,700 1000,700 1000,0 170,0 150,30" />
-            </svg>
             <div class="fmw-gallery">
               <div class="fg-items">
                 <div class="fg-items-img"></div>
@@ -153,7 +152,7 @@
               </div>
               <div class="fg-items">
                 <div class="fg-items-img"></div>
-                <p>// ASSET_PORTFOLIO: 04</p>
+                <p>// ASSET_PORTFOLIO: 05</p>
               </div>
               <div class="fg-skeleton">
                 <div class="fg-skeleton-img"></div>
@@ -202,14 +201,18 @@
 <footer>
   <div class="footer-wrap">
     <div>
-      <div class="facebook">
-        <i style="font-size:36px" class="fa">&#xf09a;</i>
-        <a href="http://facebook.com/JPVillarealSA">Patrick Villareal</a>
-      </div>
-      <div class="instagram">
-        <i class="fa fa-instagram" style="font-size:36px"></i>
-        <a href="http://instagram.com/jpvreal">@jpvreal</a>
-      </div>
+      <a class="facebook" href="https://www.facebook.com/JPVillarealSA">
+        <i class="fa-brands fa-square-facebook" style="font-size: 36px"></i>
+        <p>Patrick Villareal</p>
+      </a>
+      <a class="instagram" href="http://instagram.com/jpvreal">
+        <i class="fa-brands fa-instagram" style="font-size: 36px"></i>
+        <p>@jpvreal</p>
+      </a>
+      <a class="discord" href="https://discord.com/users/274532337533059072">
+        <i class="fa-brands fa-discord" style="font-size: 36px"></i>
+        <p>snparc</p>
+      </a>
     </div>
     <p>Theme Inspired By Spiderman: Brand New Day</p>
   </div>
